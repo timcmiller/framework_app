@@ -1,0 +1,26 @@
+{
+  "name": "sludgy-trucker-coffee",
+  "version": "0.1.0",
+  "description": "A humble http framework.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timcmiller/framework_app.git"
+  },
+  "author": "Craig Campbell, Tim Miller, Kenji Crosland",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/timcmiller/framework_app/issues"
+  },
+  "homepage": "https://github.com/timcmiller/framework_app#readme",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^1.12.0",
+    "gulp-mocha": "^2.1.3",
+    "jshint-stylish": "^2.0.1",
+    "mocha": "^2.3.3"
+  }
+}
