@@ -1,4 +1,7 @@
 # framework_app
+
+[![Build Status](https://travis-ci.org/timcmiller/framework_app.svg)](https://travis-ci.org/timcmiller/framework_app)
+
 <h1>The sludgy-trucker-coffee (STC) http Framework</h1>
 
 How to use the STC framework
