@@ -7,20 +7,16 @@ var Router = require(__dirname + '/../lib/router');
 
 describe('sludgy trucker coffee router', function() {
 
-//before every test we want to make a new instance of Router
-  beforeEach(function() {
-    this.router = new Router();
-  });
-
 //the router should at a minimum has all of these properties
   it('should be a router', function() {
-    expect(this.router.routes).to.have.property('GET');
-    expect(this.router.routes).to.have.property('POST');
-    expect(this.router.routes).to.have.property('PUT');
-    expect(this.router.routes).to.have.property('PATCH');
-    expect(this.router.routes).to.have.property('DELETE');
+    expect(Router.routes).to.have.property('GET');
+    expect(Router.routes).to.have.property('POST');
+    expect(Router.routes).to.have.property('PUT');
+    expect(Router.routes).to.have.property('PATCH');
+    expect(Router.routes).to.have.property('DELETE');
   });
-  });
+});
+
 describe('a get request to an invalid route', function() {
   it('should respond with a 404', function() {
     var req = {
@@ -34,7 +30,7 @@ describe('a get request to an invalid route', function() {
       }
 
     }
-    this.router.route(req, res);
+    Router.route(req, res);
     expect(res).to.have.status(404);
     });
   });
@@ -51,7 +47,7 @@ describe('a get request to a valid route', function() {
         expect(headers).to.eql({"Content-Type": "text/html"});
       }
     }
-    this.router.route(req, res);
+    Router.route(req, res);
     expect(res).to.have.status(200);
   });
 });
@@ -70,7 +66,7 @@ describe('a post request to a valid route', function() {
         expect(res.text).to.eql('{"nevergonna":"giveyouup"}');
       }
     }
-    this.router.route(req, res);
+    Router.route(req, res);
     expect(res).to.have.status(200);
   });
 });
