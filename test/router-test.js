@@ -41,6 +41,14 @@ describe('a get request to an invalid route', function() {
 });
 
 describe('a get request to a valid route', function() {
+  before(function(){
+    Router.get('/', function(req, res){
+      res.writeHead(200, {'Content-Type' : 'text/html'});
+      res.write('INSERT HTML FILE HERE');
+      res.end();
+    })
+  });
+
   it('should respond with a 200 status', function() {
     var req = {
       url: '/',
@@ -50,10 +58,16 @@ describe('a get request to a valid route', function() {
       writeHead: function(status, headers) {
         expect(status).to.eql(200);
         expect(headers).to.eql({"Content-Type": "text/html"});
+      },
+
+      write: function(text){
+        expect(text).to.eql('INSERT HTML FILE HERE');
+      },
+
+      end: function() {
       }
     }
     Router.route(req, res);
-    expect(res).to.have.status(200);
   });
 });
 
