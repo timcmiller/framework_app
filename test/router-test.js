@@ -27,13 +27,18 @@ describe('a get request to an invalid route', function() {
       writeHead: function(status, headers) {
         expect(status).to.eql(404);
         expect(headers).to.eql({"Content-Type": "text/plain"});
-      }
+      },
+      write: function(text){
+        expect(text).to.eql('not found');
+      },
 
+      end: function() {
+
+      }
     }
     Router.route(req, res);
-    expect(res).to.have.status(404);
     });
-  });
+});
 
 describe('a get request to a valid route', function() {
   it('should respond with a 200 status', function() {
