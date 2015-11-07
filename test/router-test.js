@@ -72,20 +72,30 @@ describe('a get request to a valid route', function() {
 });
 
 describe('a post request to a valid route', function() {
+  before(function(){
+    Router.post('/coffay', function(req, res){
+      res.writeHead(200, {"Content-Type": "application/json"});
+      res.write('{"nevergonna":"giveyouup"}');
+      res.end();
+    });
+  });
   it('should respond with a 200 status', function() {
     var req = {
-      url: '/',
+      url: '/coffay',
       method: 'POST',
       data: '{"nevergonna":"giveyouup"}'
     };
     var res = {
       writeHead: function(status, headers) {
         expect(status).to.eql(200);
-        expect(headers).to.eql({"Content-Type": "text/html"});
-        expect(res.text).to.eql('{"nevergonna":"giveyouup"}');
+        expect(headers).to.eql({'Content-Type': 'application/json'});
+      },
+      write: function(text){
+        expect(text).to.eql('{"nevergonna":"giveyouup"}');
+      },
+      end: function() {
       }
     }
     Router.route(req, res);
-    expect(res).to.have.status(200);
   });
 });
