@@ -35,7 +35,7 @@ describe('a get request to an invalid route', function() {
       end: function() {
 
       }
-    }
+    };
     Router.route(req, res);
     });
 });
@@ -46,7 +46,7 @@ describe('a get request to a valid route', function() {
       res.writeHead(200, {'Content-Type' : 'text/html'});
       res.write('INSERT HTML FILE HERE');
       res.end();
-    })
+    });
   });
 
   it('should respond with a 200 status', function() {
@@ -66,7 +66,7 @@ describe('a get request to a valid route', function() {
 
       end: function() {
       }
-    }
+    };
     Router.route(req, res);
   });
 });
@@ -95,7 +95,7 @@ describe('a post request to a valid route', function() {
       },
       end: function() {
       }
-    }
+    };
     Router.route(req, res);
   });
 });

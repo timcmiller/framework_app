@@ -1,6 +1,4 @@
-#!/usr/bin/env node
-
-var start = require(__dirname + '/lib/server.js');
+var router = require(__dirname + '/lib/router.js');
 
 
-start();
+
