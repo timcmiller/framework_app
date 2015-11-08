@@ -2,7 +2,6 @@ var http = require('http');
 var router = require(__dirname + '/../lib/router.js');
 var server = require(__dirname + '/../lib/server.js');
 
-// var port = process.argv[2] || process.env.PORT || 3000;
 
 //setting up a route for a GET request
 router.get('/finecupofcoffee', function(req, res){
@@ -26,13 +25,5 @@ router.get('/cantgetnosatisfaction', function(req, res){
   res.end();
 });
 
-server.listen(5000)
+server.listen(3000);
 
-// http.createServer(function(req, res){
-//   router.route(req, res);
-//   console.log('createdserver');
-
-// })
-// .listen(5000, function(){
-//   console.log('The server is running on port: ' + 5000);
-// });
