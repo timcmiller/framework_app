@@ -17,41 +17,38 @@ Features
 Creating a server with the STC framework
 --------------------
 ```
-
-var http = require('http');
-var router = require('sludgy-trucker-coffee');
-
-var port = process.argv[2] || process.env.PORT || 3000;
+var router = require('sludgy-trucker-coffee').router;
+var server = require('sludgy-trucker-coffee').server;
 
 //setting up a route for a GET request
 router.get('/finecupofcoffee', function(req, res){
+  console.log('get request');
   res.writeHead(200, {'Content-Type' : 'text/plain'});
   res.write('wow, so awesome, such framework');
   res.end();
 });
 
 //setting up a route for a POST request
-router.post('/finecupofcoffee', function(req, res){
-  res.writeHead(200, {'Content-Type' : 'text/json'});
-  res.write('{"Hello": "World"}');
-  res.end();
+router.post('/finecupofjoe', function(req, res){
+  var totalData = '';
+  req.on('data', function(data){
+    totalData += data.toString();
+  });
+  req.on('end', function() {
+    res.writeHead(200, {"Content-Type": "application/json"});
+    res.write(totalData);
+    res.end();
+  });
 });
 
 //a GET request for a 404 page
 router.get('/cantgetnosatisfaction', function(req, res){
-  res.writeHead(200, {'Content-Type' : 'text/plain'});
+  res.writeHead(404, {'Content-Type' : 'text/plain'});
   res.write('not found');
   res.end();
 });
 
-
-http.createServer(function(req, res){
-  router.route(req, res);
-
-})
-.listen(port, function(){
-  console.log('The server is running on port: ' + port);
-});
+server.listen(3000);
 
 ```
 
