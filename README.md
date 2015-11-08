@@ -17,7 +17,7 @@ Features
 Creating a server with the STC framework
 --------------------
 ```
-'use strict';
+
 var http = require('http');
 var router = require('sludgy-trucker-coffee');
 
