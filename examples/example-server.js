@@ -1,4 +1,3 @@
-var http = require('http');
 var router = require(__dirname + '/../lib/router.js');
 var server = require(__dirname + '/../lib/server.js');
 
@@ -12,15 +11,21 @@ router.get('/finecupofcoffee', function(req, res){
 });
 
 //setting up a route for a POST request
-router.post('/finecupofcoffee', function(req, res){
-  res.writeHead(200, {'Content-Type' : 'text/json'});
-  res.write('{"Hello": "World"}');
-  res.end();
+router.post('/finecupofjoe', function(req, res){
+  var totalData = '';
+  req.on('data', function(data){
+    totalData += data.toString();
+  });
+  req.on('end', function() {
+    res.writeHead(200, {"Content-Type": "application/json"});
+    res.write(totalData);
+    res.end();
+  });
 });
 
 //a GET request for a 404 page
 router.get('/cantgetnosatisfaction', function(req, res){
-  res.writeHead(200, {'Content-Type' : 'text/plain'});
+  res.writeHead(404, {'Content-Type' : 'text/plain'});
   res.write('not found');
   res.end();
 });
