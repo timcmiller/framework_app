@@ -1,4 +1,4 @@
-var router = require(__dirname + '/lib/router.js');
+module.exports = exports = require(__dirname + '/lib/router.js');
 
 
 
