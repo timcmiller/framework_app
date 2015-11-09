@@ -13,54 +13,63 @@ Installation
 
 Creating a server with the STC framework
 --------------------
+```var stc = require('sludgy-trucker-coffee');```
+
+Setting up a route for a GET request:
+
 ```
-var stc = require('sludgy-trucker-coffee');
-
-//setting up a route for a GET request
 stc.router.get('/finecupofjoe', "damn that's fine coffee");
+```
+will print "damn that's a fine cup of coffee" when you visit /finecupofjoe.
 
-//You can post a get route without a second argument. It will return some reminder test to do so ;)
+You can post a get route without a second argument, but will return some reminder test to do so ;)
+
+```
 stc.router.get('/default');
+```
+will give you the default reminder text when you go to /default.
 
-//For those who want a little more control, you can add a callback
+For those who want a little more control, you can add your own callback:
+
+```
 stc.router.get('/thehardway', function(req, res){
     res.writeHead(200, {'Content-Type': 'text/plain'});
     res.write("Here be some text I wrote the hard way");
     res.end();
   });
-
-//NOTE: If you want to serve up more than plain text (Like HTML), you MUST add a callback and use res.writeHead.
-
-//setting up a route for a POST request
-stc.router.post('/posting');
-
-//404 messages are already set up for you!
-
-//Setting up a server is easy as a sludgy cup of Folgers Instant!
-server.listen(3000);
-
 ```
 
-Testing
--------
-We like using superagent-cli to test out our server. First thing's first:
+NOTE: If you want to serve up more than plain text (like HTML), you <strong>MUST</strong> add a callback and use res.writeHead.
+
+
+You can set up a POST request with your own custom callback:
 ```
-npm install superagent-cli -g
+stc.router.post('/postwithcustomcallback', function(req, res){
+      var totalData = '';
+      req.on('data', function(data){
+        totalData += data.toString();
+      });
+      req.on('end', function() {
+        res.writeHead(200, {"Content-Type": "application/json"});
+        res.write(totalData);
+        res.end();
+      });
 ```
-Then fire up your server!
+and setting up a route for a POST request is easy if you can use the default callback provided above.  Simply use the following code:
+
 ```
-node myserver.js 3000
-//'The server is running on port: 3000'
+stc.router.post('/yourownurl');
 ```
 
-Using superagent-cli
-```
-superagent localhost:3000
-```
-returns 'wow, so awesome, such framework'
+404 messages are already set up for you! But if you want to create custom 404 messages you can! Simply use the .custom404 method:
 
-and
 ```
-superagent localhost:3000/cantgetnosatisfaction
+stc.custom404('some custom message here');
 ```
-returns 'not found'
+
+Lastly, setting up a server is easy as a sludgy cup of Folgers Instant!
+
+```
+stc.server.listen(3000);
+
+```
