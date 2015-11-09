@@ -17,17 +17,17 @@ To then use STC you must require in ('sludgy-trcuker-coffee').
 
 Router Methods
 <ul>
-  <li><a href="#get-request">stc.router.get</a></li>
-  <li><a href="#post-request">stc.router.post</a></li>
-  <li><a href="#custom-404">stc.router.custom404</a></li>
+  <li><a href="get-request">stc.router.get</a></li>
+  <li><a href="post-request">stc.router.post</a></li>
+  <li><a href="custom-404">stc.router.custom404</a></li>
 </ul>
 Server Methods
 <ul>
-  <li><a href="#listen">stc.server.listen</a></li>
+  <li><a href="listen">stc.server.listen</a></li>
 </ul>
 --------------------
 
-<h4><span id="get-request">Setting up a route for a GET request:</span></h4>
+<h4><span a name="get-request">Setting up a route for a GET request:</span></h4>
 
 <strong>stc.router.get(pathname, [plain/text])</strong>
 
@@ -60,7 +60,7 @@ stc.router.get('/thehardway', function(req, res){
 NOTE: If you want to serve up more than plain text (like HTML), you <strong>MUST</strong> add a callback and use res.writeHead.
 
 
-<h4><span id="post-request">Setting up a route for a POST request:</span></h4>
+<h4><span a name="post-request">Setting up a route for a POST request:</span></h4>
 
 <strong>stc.router.post(pathname, callback)</strong>
 
@@ -88,7 +88,7 @@ stc.router.post('/postwithcustomcallback', function(request, respnse){
       });
 ```
 
-<h4><span id="custom-404">Setting up your own customer 404 response:</span></h4>
+<h4><span a name="custom-404">Setting up your own customer 404 response:</span></h4>
 
 <strong>stc.router.custom404(string)</strong>
 
@@ -102,7 +102,7 @@ stc.custom404('some custom message here');
 
 Every 404 you encounter will now respond with 'some custom message here'.
 
-<h4><span id="listen">Starting up your server:</span></h4>
+<h4><span a name="listen">Starting up your server:</span></h4>
 
 <strong>stc.server.listen([port])</strong>
 
