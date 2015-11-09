@@ -27,7 +27,7 @@ Server Methods
 </ul>
 --------------------
 
-<span class="get-request">Setting up a route for a GET request:</span>
+<h4><span id="get-request">Setting up a route for a GET request:</span></h4>
 
 <strong>stc.router.get(pathname, [plain/text])</strong>
 
@@ -60,7 +60,7 @@ stc.router.get('/thehardway', function(req, res){
 NOTE: If you want to serve up more than plain text (like HTML), you <strong>MUST</strong> add a callback and use res.writeHead.
 
 
-<span class="post-request">Setting up a route for a POST request:</span>
+<h4><span id="post-request">Setting up a route for a POST request:</span></h4>
 
 <strong>stc.router.post(pathname, callback)</strong>
 
@@ -88,7 +88,7 @@ stc.router.post('/postwithcustomcallback', function(request, respnse){
       });
 ```
 
-<span class="custom-404">Setting up your own customer 404 response:</span>
+<h4><span id="custom-404">Setting up your own customer 404 response:</span></h4>
 
 <strong>stc.router.custom404(string)</strong>
 
@@ -102,7 +102,7 @@ stc.custom404('some custom message here');
 
 Every 404 you encounter will now respond with 'some custom message here'.
 
-<span class="listen">Starting up your server:</span>
+<h4><span id="listen">Starting up your server:</span></h4>
 
 <strong>stc.server.listen([port])</strong>
 
