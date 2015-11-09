@@ -1,6 +1,6 @@
 {
   "name": "sludgy-trucker-coffee",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A humble http router framework.",
   "main": "index.js",
   "scripts": {

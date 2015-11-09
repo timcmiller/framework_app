@@ -247,7 +247,7 @@ describe('a css file getStatic request to a valid route', function(){
   before(function(){
     Router.getStatic(__dirname + '/../examples/public/reset.css');
   });
-  it('should respond with a 200 status code and an HTML string', function(){
+  it('should respond with a 200 status code', function(){
     var req = {
       url: '/reset.css',
       method: 'GET'
