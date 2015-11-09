@@ -19,7 +19,7 @@ describe('sludgy trucker coffee router', function() {
 
 describe('a get request to an invalid route', function() {
 
-  it('should respond with a 404', function() {
+  it('should respond with a 404 using the default 404 message', function() {
 
     var req = {
       url: 'this-coffee-tastes-horrible',
@@ -34,16 +34,43 @@ describe('a get request to an invalid route', function() {
       write: function(text){
         expect(text).to.eql('not found');
       },
-
       end: function() {
       }
-
     };
-
     Router.route(req, res);
-
   });
 });
+
+describe('a get request to an invalid route when the custom404 method is used', function() {
+
+  before(function(){
+    var my404;
+    Router.custom404('this is a custom 404 message');
+  });
+
+  it('should respond with a 404 using a custom 404 message', function() {
+    var req = {
+      url: 'this-coffee-tastes-horrible',
+      method: 'GET'
+    };
+
+
+    var res = {
+      writeHead: function(status, headers) {
+        expect(status).to.eql(404);
+        expect(headers).to.eql({"Content-Type": "text/plain"});
+      },
+      write: function(text){
+        expect(text).to.eql('this is a custom 404 message');
+      },
+      end: function() {
+      }
+    };
+    Router.route(req, res);
+  });
+});
+
+
 
 describe('a get request to a valid route using our shorthand .get() with no second argument', function() {
   before(function(){
@@ -131,19 +158,21 @@ describe('a get request to a valid route with a callback as the 2nd parameter', 
   });
 });
 
+
 describe('a post request to a valid route using our shorthand .post() but no second argument', function() {
   before(function(){
     Router.post('/coffay');
-    });
   });
   it('should respond with a 200 status fo sho', function() {
     var req = {
+      on: function(data, cb){},
       url: '/coffay',
       method: 'POST',
       data: '{"nevergonna":"giveyouup"}'
     };
     var res = {
       writeHead: function(status, headers) {
+        console.log(status, 'RIGHT HERE');
         expect(status).to.eql(200);
         expect(headers).to.eql({'Content-Type': 'application/json'});
       },
@@ -155,6 +184,8 @@ describe('a post request to a valid route using our shorthand .post() but no sec
     };
     Router.route(req, res);
   });
+});
+
 
 describe('a post request to a valid route with a callback as the 2nd parameter', function() {
   before(function(){

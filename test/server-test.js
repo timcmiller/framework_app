@@ -35,8 +35,14 @@ describe('stc server', function() {
       .end(function(err, res) {
         expect(err).to.eql(null);
         expect(res).to.have.status(404);
-        expect(res.text).to.eql('not found');
+        // expect(possible404Responses).to.contain.any.keys}({defaultVal : 'not found'});
+        expect({
+          defaultVal: 'not found',
+          customVal:  'this is a custom 404 message'
+        }).to.contain.any.keys({'customVal': res.text, 'defaultVal': res.text});
         done();
       });
   });
 });
+
+
