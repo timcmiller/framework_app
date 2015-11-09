@@ -35,7 +35,7 @@ Server Methods
 Sets up a basic route on your server that will return the plain/text you give it as a second argument
 
 1. Pathname: Any valid url character may be used in the form of a string.
-2. Response(optional): The response you want the server to send and thus be displayed on a browser if you navigate to this route. If you do not include a response it defaults to placeholder.
+2. Response[optional]: The response you want the server to send and thus be displayed on a browser if you navigate to this route. If you do not include a response it defaults to placeholder.
 
 ```
 stc.router.get('/finecupofjoe', "damn that's fine coffee");
@@ -66,6 +66,7 @@ NOTE: If you want to serve up more than plain text (like HTML), you <strong>MUST
 <strong>stc.router.getStatic(pathname, [route])</strong>
 
 1.Pathname: Any valid pathname to the file contents you want to serve.
+
 2.Route[Optional]: If you leave this blank it defaults to the filename and extenstion. (example: '/style.css');
 
 <font color="gray">Coming soon: Support for image files!</font>
