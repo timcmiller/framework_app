@@ -71,6 +71,7 @@ NOTE: If you want to serve up more than plain text (like HTML), you <strong>MUST
 
 <p>Coming soon: Support for image files!</p>
 
+```
 stc.router.getStatic('/path/to/index.html', '/');
 //Returns the contents of index.html at the '/' route
 
