@@ -11,8 +11,9 @@ router.get('/finecupofcoffee', function(req, res){
 });
 
 //setting up a route for a GET request and responding with a static HTML file
-router.getStatic('public/index.html', '/');
-router.getStatic('public/reset.css');
+
+router.getStatic(__dirname + '/public/index.html', '/');
+router.getStatic(__dirname + '/public/reset.css');
 
 //setting up a route for a POST request
 router.post('/finecupofjoe', function(req, res){
