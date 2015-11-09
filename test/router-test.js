@@ -217,13 +217,13 @@ describe('a post request to a valid route with a callback as the 2nd parameter',
   });
 });
 
-describe('a get request to any designated static files (using Router.static(directory)', function(){
+describe('an html file getStatic request to a valid route', function(){
   before(function(){
-    Router.staticFiles(__dirname + '/../examples/public/');
+    Router.getStatic(__dirname + '/../examples/public/index.html', '/');
   });
-  it('should respond with a 200 status code to any file in the directory', function(){
+  it('should respond with a 200 status code and an HTML string', function(){
     var req = {
-      url: '/index.html',
+      url: '/',
       method: 'GET'
     };
     var res = {
@@ -233,7 +233,32 @@ describe('a get request to any designated static files (using Router.static(dire
       },
 
       write: function(text){
-        expect(text).to.eql('/index.html');
+        expect(text).to.include('<!DOCTYPE html>');
+      },
+
+      end: function() {
+      }
+    };
+    Router.route(req, res);
+  });
+});
+
+describe('a css file getStatic request to a valid route', function(){
+  before(function(){
+    Router.getStatic(__dirname + '/../examples/public/reset.css');
+  });
+  it('should respond with a 200 status code and an HTML string', function(){
+    var req = {
+      url: '/reset.css',
+      method: 'GET'
+    };
+    var res = {
+      writeHead: function(status, headers) {
+        expect(status).to.eql(200);
+        expect(headers).to.eql({"Content-Type": "text/css"});
+      },
+
+      write: function(text){
       },
 
       end: function() {
