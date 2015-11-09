@@ -1,6 +1,7 @@
 var expect = require('chai').expect;
 //make sure
 var Router = require(__dirname + '/../lib/router');
+var fs = require('fs');
 
 //Used in class code as a refrence
 //Used
@@ -209,6 +210,57 @@ describe('a post request to a valid route with a callback as the 2nd parameter',
       write: function(text){
         expect(text).to.eql('{"nevergonna":"giveyouup"}');
       },
+      end: function() {
+      }
+    };
+    Router.route(req, res);
+  });
+});
+
+describe('an html file getStatic request to a valid route', function(){
+  before(function(){
+    Router.getStatic(__dirname + '/../examples/public/index.html', '/');
+  });
+  it('should respond with a 200 status code and an HTML string', function(){
+    var req = {
+      url: '/',
+      method: 'GET'
+    };
+    var res = {
+      writeHead: function(status, headers) {
+        expect(status).to.eql(200);
+        expect(headers).to.eql({"Content-Type": "text/html"});
+      },
+
+      write: function(text){
+        expect(text).to.include('<!DOCTYPE html>');
+      },
+
+      end: function() {
+      }
+    };
+    Router.route(req, res);
+  });
+});
+
+describe('a css file getStatic request to a valid route', function(){
+  before(function(){
+    Router.getStatic(__dirname + '/../examples/public/reset.css');
+  });
+  it('should respond with a 200 status code and an HTML string', function(){
+    var req = {
+      url: '/reset.css',
+      method: 'GET'
+    };
+    var res = {
+      writeHead: function(status, headers) {
+        expect(status).to.eql(200);
+        expect(headers).to.eql({"Content-Type": "text/css"});
+      },
+
+      write: function(text){
+      },
+
       end: function() {
       }
     };
