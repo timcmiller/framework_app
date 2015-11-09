@@ -18,6 +18,7 @@ To then use STC you must require in ('sludgy-trucker-coffee').
 Router Methods
 <ul>
   <li><a href="#get-request">stc.router.get</a></li>
+  <li><a href="#get-static">stc.router.getStatic</a></li>
   <li><a href="#post-request">stc.router.post</a></li>
   <li><a href="#custom-404">stc.router.custom404</a></li>
 </ul>
@@ -60,10 +61,14 @@ stc.router.get('/thehardway', function(req, res){
 
 NOTE: If you want to serve up more than plain text (like HTML), you <strong>MUST</strong> add a callback and use res.writeHead.
 
-<h4><a name="get-request"></a>Setting up a route for a GET request to a static file html or css:</h4>
+<h4><a name="get-static"></a></a>Setting up a route for a GET request to a static file html or css:</h4>
+
 <strong>stc.router.getStatic(pathname, [route])</strong>
+
 1.Pathname: Any valid pathname to the file contents you want to serve.
 2.Route[Optional]: If you leave this blank it defaults to the filename and extenstion. (example: '/style.css');
+
+<font color="gray">Coming soon: Support for image files!</font>
 
 ```
 stc.router.getStatic('/path/to/index.html', '/');
@@ -74,8 +79,6 @@ stc.router.getStatic('/path/to/style.css');
 ```
 
 <h4><a name="post-request"></a>Setting up a route for a POST request:</h4>
-
-<p style="opacity:0.4;">Coming soon: Support for image files!</p>
 
 <strong>stc.router.post(pathname, callback)</strong>
 
