@@ -10,48 +10,34 @@ Installation
 -------------
 ```npm install sludgy-trucker-coffee```
 
-Features
------------
-
 
 Creating a server with the STC framework
 --------------------
 ```
-
-var http = require('http');
-var router = require('sludgy-trucker-coffee');
-
-var port = process.argv[2] || process.env.PORT || 3000;
+var stc = require('sludgy-trucker-coffee');
 
 //setting up a route for a GET request
-router.get('/finecupofcoffee', function(req, res){
-  res.writeHead(200, {'Content-Type' : 'text/plain'});
-  res.write('wow, so awesome, such framework');
-  res.end();
-});
+stc.router.get('/finecupofjoe', "damn that's fine coffee");
+
+//You can post a get route without a second argument. It will return some reminder test to do so ;)
+stc.router.get('/default');
+
+//For those who want a little more control, you can add a callback
+stc.router.get('/thehardway', function(req, res){
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.write("Here be some text I wrote the hard way");
+    res.end();
+  });
+
+//NOTE: If you want to serve up more than plain text (Like HTML), you MUST add a callback and use res.writeHead.
 
 //setting up a route for a POST request
-router.post('/finecupofcoffee', function(req, res){
-  res.writeHead(200, {'Content-Type' : 'text/json'});
-  res.write('{"Hello": "World"}');
-  res.end();
-});
+stc.router.post('/posting');
 
-//a GET request for a 404 page
-router.get('/cantgetnosatisfaction', function(req, res){
-  res.writeHead(200, {'Content-Type' : 'text/plain'});
-  res.write('not found');
-  res.end();
-});
+//404 messages are already set up for you!
 
-
-http.createServer(function(req, res){
-  router.route(req, res);
-
-})
-.listen(port, function(){
-  console.log('The server is running on port: ' + port);
-});
+//Setting up a server is easy as a sludgy cup of Folgers Instant!
+server.listen(3000);
 
 ```
 
