@@ -10,7 +10,7 @@ Installation
 -------------
 ```npm install sludgy-trucker-coffee```
 
-To then use STC you must require in ('sludgy-trcuker-coffee').
+To then use STC you must require in ('sludgy-trucker-coffee').
 
 ```var stc = require('sludgy-trucker-coffe')```
 
@@ -40,15 +40,12 @@ Sets up a basic route on your server that will return the plain/text you give it
 stc.router.get('/finecupofjoe', "damn that's fine coffee");
 ```
 
-<<<<<<< HEAD
 will print "damn that's a fine cup of coffee" when you visit /finecupofjoe.
-=======
-You can post a get route without a second argument, but will return some reminder text to do so ;)
->>>>>>> master
 
 ```
 stc.router.get('/default');
 ```
+
 will give you the default reminder text when you go to /default.
 
 For those who want a little more control, you can add your own callback:
