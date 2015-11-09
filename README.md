@@ -66,9 +66,10 @@ NOTE: If you want to serve up more than plain text (like HTML), you <strong>MUST
 <strong>stc.router.getStatic(pathname, [route])</strong>
 
 1.Pathname: Any valid pathname to the file contents you want to serve.
+
 2.Route[Optional]: If you leave this blank it defaults to the filename and extenstion. (example: '/style.css');
 
-<font color="silver">Coming soon: Support for image files!</font>
+<font color="grey">Coming soon: Support for image files!</font>
 
 ```
 stc.router.getStatic('/path/to/index.html', '/');
