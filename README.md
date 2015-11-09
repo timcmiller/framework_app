@@ -17,13 +17,13 @@ To then use STC you must require in ('sludgy-trcuker-coffee').
 
 Router Methods
 <ul>
-  <li><a href="get-request">stc.router.get</a></li>
-  <li><a href="post-request">stc.router.post</a></li>
-  <li><a href="custom-404">stc.router.custom404</a></li>
+  <li><a href="#get-request">stc.router.get</a></li>
+  <li><a href="#post-request">stc.router.post</a></li>
+  <li><a href="#custom-404">stc.router.custom404</a></li>
 </ul>
 Server Methods
 <ul>
-  <li><a href="listen">stc.server.listen</a></li>
+  <li><a href="#listen">stc.server.listen</a></li>
 </ul>
 --------------------
 
