@@ -69,13 +69,8 @@ NOTE: If you want to serve up more than plain text (like HTML), you <strong>MUST
 
 2.Route[Optional]: If you leave this blank it defaults to the filename and extenstion. (example: '/style.css');
 
-<<<<<<< HEAD
 <p>Coming soon: Support for image files!</p>
-=======
-<font color="gray">Coming soon: Support for image files!</font>
->>>>>>> 7f4cbd77f41821c5dfe0018a21c834a2b7fadd66
 
-```
 stc.router.getStatic('/path/to/index.html', '/');
 //Returns the contents of index.html at the '/' route
 
