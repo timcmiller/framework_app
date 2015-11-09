@@ -12,7 +12,7 @@ Installation
 
 To then use STC you must require in ('sludgy-trucker-coffee').
 
-```var stc = require('sludgy-trucker-coffe')```
+```var stc = require('sludgy-trucker-coffee')```
 
 
 Router Methods
@@ -35,7 +35,7 @@ Server Methods
 Sets up a basic route on your server that will return the plain/text you give it as a second argument
 
 1. Pathname: Any valid url character may be used in the form of a string.
-2. Response[optional]: The response you want the server to send and thus be displayed on a browser if you navigate to this route. If you do not include a response it defaults to placeholder.
+2. Response[optional]: The response you want the server to send and thus be displayed on a browser if you navigate to this route. If you do not include a response it defaults to a placeholder.
 
 ```
 stc.router.get('/finecupofjoe', "damn that's fine coffee");
@@ -52,14 +52,14 @@ will give you the default reminder text when you go to /default.
 For those who want a little more control, you can add your own callback:
 
 ```
-stc.router.get('/thehardway', function(req, res){
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.write("Here be some text I wrote the hard way");
-    res.end();
+stc.router.get('/thehardway', function(request, response){
+    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.write("Here be some text I wrote the hard way");
+    response.end();
   });
 ```
 
-NOTE: If you want to serve up more than plain text (like HTML), you <strong>MUST</strong> add a callback and use res.writeHead.
+NOTE: If you want to serve up more than plain text (like HTML), you <strong>MUST</strong> add a callback and use response.writeHead.
 
 <h4><a name="get-static"></a></a>Setting up a route for a GET request to a static file html or css:</h4>
 
@@ -81,7 +81,7 @@ stc.router.getStatic('/path/to/style.css');
 
 <h4><a name="post-request"></a>Setting up a route for a POST request:</h4>
 
-<strong>stc.router.post(pathname, callback)</strong>
+<strong>stc.router.post(pathname, [callback])</strong>
 
 1.Pathname: Any valid url character may be used in the form of a string.
 2.Callback[optional]: A callback function with the parameters of request and response. If left black will default to an empty response.
@@ -102,8 +102,8 @@ stc.router.post('/postwithcustomcallback', function(request, respnse){
       });
       request.on('end', function() {
         response.writeHead(200, {"Content-Type": "application/json"});
-        resresponse.write(totalData);
-        resresponse.end();
+        response.write(totalData);
+        response.end();
       });
 ```
 
