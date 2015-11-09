@@ -22,7 +22,7 @@ stc.router.get('/finecupofjoe', "damn that's fine coffee");
 ```
 will print "damn that's a fine cup of coffee" when you visit /finecupofjoe.
 
-You can post a get route without a second argument, but will return some reminder test to do so ;)
+You can post a get route without a second argument, but will return some reminder text to do so ;)
 
 ```
 stc.router.get('/default');

@@ -1,6 +1,7 @@
 var expect = require('chai').expect;
 //make sure
 var Router = require(__dirname + '/../lib/router');
+var fs = require('fs');
 
 //Used in class code as a refrence
 //Used
@@ -209,6 +210,32 @@ describe('a post request to a valid route with a callback as the 2nd parameter',
       write: function(text){
         expect(text).to.eql('{"nevergonna":"giveyouup"}');
       },
+      end: function() {
+      }
+    };
+    Router.route(req, res);
+  });
+});
+
+describe('a get request to any designated static files (using Router.static(directory)', function(){
+  before(function(){
+    Router.staticFiles(__dirname + '/../examples/public/');
+  });
+  it('should respond with a 200 status code to any file in the directory', function(){
+    var req = {
+      url: '/index.html',
+      method: 'GET'
+    };
+    var res = {
+      writeHead: function(status, headers) {
+        expect(status).to.eql(200);
+        expect(headers).to.eql({"Content-Type": "text/html"});
+      },
+
+      write: function(text){
+        expect(text).to.eql('/index.html');
+      },
+
       end: function() {
       }
     };
